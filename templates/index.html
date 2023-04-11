@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    textarea {
+        width: 100px;
+        height: 50px;
+        resize: none;
+        align-items: center;
+    }
+
+      section{
+        margin-bottom: 20px;
+    }
+    
+    .result {
+        color: brown;
+        align-items: center;
+    }
+
+    .post__lowwindow {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-right: 10px;
+    }
+
+    .post {
+        width: 600px;
+        height: 100px;
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .post__item {
+        width: calc(100% / 2);
+        display: flex;
+        align-items: flex-start;
+        border-style: solid;
+        border-width: 0.5px;
+    }
+
+    .post__item + .post__item {
+        margin-left: 20px;
+    }
+
+    .post__window {
+        width: 200px;
+        height: 15px;
+        display: flex;
+    }
+
+    .post__text, .result {
+        margin-bottom: 0;
+    }
+
+    .post__text-low {
+        margin-top: 5px;
+    }
+
+    .main__return {
+        width: 400px;
+        height: 30px;
+    }
+    </style>
+    <title>Сравнение слов</title>
+</head>
+<body>
+    <h1 class="header">Сравнение слов</h1>
+        <p class="header__text">
+            Определение косинусного сходства для отдельных слов/текста (на английском языке)
+        </p>
+    <div class="main">
+        <form method="POST" action="{{url_for('predict')}}" enctype = "multipart/form-data">
+            <section class="post">
+                <div class="post__item">
+                    <div class="post__item-content">
+                        <p class='post__text'><strong>Введите сущность:</strong></p>
+                        <p class='post__text-low'>(введите любое слово на английском)</p>
+                        <input class='post__window' type="text" name='word' placeholder="red">
+                    </div>
+                </div>
+                <div class="post__item">
+                    <div class="post__item-content">
+                        <p class='post__text'><strong>Введите сущность для сравнения:</strong></p>
+                        <p class='post__text-low'>(введите любое слово на английском)</p>
+                        <input class='post__window'type="text" name='word_2' placeholder="hat">
+                    </div>   
+                </div>
+            </section>
+            <input class='post__lowwindow' type="submit" value="Сравнить">
+            <input class='post__lowwindow' type="reset"> 
+        </form>
+        <h2 class="result">Результат сравнения</h2>
+            <p class='post__text-low'>(чем ближе к 1, тем слова более похожи)</p>
+            <textarea class="main__return" name="data">{{data}}</textarea>
+    </div>
+</body>
+</html>
