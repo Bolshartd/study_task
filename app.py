@@ -2,7 +2,6 @@ import textdistance
 import re
 import nltk
 import pymorphy2
-import re
 from nltk.corpus import stopwords
 nltk.download('stopwords')
 morph = pymorphy2.MorphAnalyzer()
